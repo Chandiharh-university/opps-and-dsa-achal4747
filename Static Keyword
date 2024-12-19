@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+private:
+    static int staticCount; 
+
+public:
+
+    void passByValue(int x) {
+        x += 10;
+        cout << "Inside passByValue, x = " << x << endl;
+    }
+
+    void passByReference(int& x) {
+        x += 10;
+        cout << "Inside passByReference, x = " << x << endl;
+    }
+    void staticExample() {
+        staticCount++;
+        cout << "Static count = " << staticCount << endl;
+    }
+};
+
+int Demo::staticCount = 0;
+
+int main() {
+    Demo obj;
+    int num = 5;
+
+    cout << "Before passByValue, num = " << num << endl;
+    obj.passByValue(num);
+    cout << "After passByValue, num = " << num << endl;
+
+    cout << "\nBefore passByReference, num = " << num << endl;
+    obj.passByReference(num);
+    cout << "After passByReference, num = " << num << endl;
+
+    cout << "\nStatic variable demonstration:" << endl;
+    obj.staticExample();
+    obj.staticExample();
+    obj.staticExample();
+
+    return 0;
+}
